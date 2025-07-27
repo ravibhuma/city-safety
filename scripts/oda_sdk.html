@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Oracle Analytics Platform - Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- ODA Chat SDK -->
+  <script src="https://websdk.digitalassistant.oci.oraclecloud.com/websdk.js"></script>
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+    }
+    .hero-bg {
+      background: linear-gradient(to right, #1a3c6e, #4a90e2);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Header -->
+  <header class="hero-bg text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Oracle Analytics Platform</h1>
+      <p class="text-lg md:text-xl mb-6">Empower Your Business with AI-Powered Analytics</p>
+      <a href="#features" class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-100 transition">Explore Features</a>
+    </div>
+  </header>
+
+  <!-- Features Section -->
+  <section id="features" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Key Features</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-6 bg-gray-50 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold mb-4">Compelling Visual Stories</h3>
+          <p>Create interactive data visualizations with a code-free, drag-and-drop interface. Turn complex data into engaging, easy-to-understand stories.</p>
+        </div>
+        <div class="p-6 bg-gray-50 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold mb-4">Unified Data Access</h3>
+          <p>Connect to over 35 data sources, including cloud, on-premises, and personal datasets, for a consistent view across your organization.</p>
+        </div>
+        <div class="p-6 bg-gray-50 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold mb-4">Embedded AI & ML</h3>
+          <p>Leverage built-in machine learning to uncover insights and build custom models without specialized skills.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deployment Options -->
+  <section class="py-16 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Flexible Deployment Options</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-6 bg-white rounded-lg shadow-md text-center">
+          <h3 class="text-xl font-semibold mb-4">Native Cloud</h3>
+          <p>Oracle Analytics Cloud, a fully managed service on Oracle Cloud Infrastructure (OCI).</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-md text-center">
+          <h3 class="text-xl font-semibold mb-4">Private Hosted Cloud</h3>
+          <p>Deploy Oracle Analytics Server on your choice of data center or cloud infrastructure.</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-md text-center">
+          <h3 class="text-xl font-semibold mb-4">Oracle Cloud Marketplace</h3>
+          <p>Access Oracle Analytics Server as a customer-managed service via Oracle Cloud Marketplace.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-6 bg-gray-50 rounded-lg shadow-md">
+          <p class="italic">"The capabilities of Oracle Analytics Cloud are wonderful."</p>
+          <p class="mt-4 font-semibold">— Risk Management Officer, Finance Industry</p>
+        </div>
+        <div class="p-6 bg-gray-50 rounded-lg shadow-md">
+          <p class="italic">"Strong and intuitive data visualization options and solid metadata components."</p>
+          <p class="mt-4 font-semibold">— BI Developer, Healthcare Industry</p>
+        </div>
+        <div class="p-6 bg-gray-50 rounded-lg shadow-md">
+          <p class="italic">"Oracle Analytics Cloud provides the best of both worlds in governed and ungoverned data."</p>
+          <p class="mt-4 font-semibold">— Director, Enterprise Data Services, Government Industry</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 hero-bg text-white text-center">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6">Get Started with Oracle Analytics</h2>
+      <p class="text-lg mb-8">Experience the power of AI-driven analytics. Contact us to learn more or try Oracle Analytics today.</p>
+      <a href="https://www.oracle.com/business-analytics/analytics-platform/" target="_blank" class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-100 transition">Contact Us</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 bg-gray-800 text-white text-center">
+    <div class="container mx-auto px-4">
+      <p>&copy; 2025 Oracle. All rights reserved.</p>
+      <p class="mt-2"><a href="https://www.oracle.com" class="underline hover:text-blue-300">Visit Oracle.com</a></p>
+    </div>
+  </footer>
+
+  <!-- Smooth Scroll -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+
+  <!-- ODA Widget Settings -->
+  <script>
+    var clientAuthEnabled = false;
+  </script>
+
+  <script>
+    var chatWidgetSettings = {
+      URI: 'oda-3513d4cd67c34199b780046508bddab9-da6f7264.data.digitalassistant.oci.oraclecloud.com',
+      channelId: '0df1a532-c69b-49a2-aa92-78e29bd2f27a',
+      enableAttachment: true,
+      showConnectionStatus: true
+    };
+  </script>
+
+  <!-- ODA Widget Initialization -->
+  <script>
+    function initSdk(name) {
+      if (!name) name = 'Bots';
+
+      setTimeout(() => {
+        if (clientAuthEnabled) {
+          window[name] = new WebSDK(chatWidgetSettings, generateToken);
+        } else {
+          window[name] = new WebSDK(chatWidgetSettings);
+        }
+
+        window[name].connect()
+          .then(() => {
+            console.log("ODA Chat connected.");
+          });
+      }, 0);
+    }
+
+    initSdk();
+  </script>
+
+</body>
+</html>

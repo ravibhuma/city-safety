@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <title>City Public Safety Department</title>
+    <meta name="Title" content="City Public Safety Department">
+    <meta name="Description" content="City Public Safety Department with Oracle Digital Assistant">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="./images/favicon.ico">
+    
+    <!-- ODA Web SDK Integration - EXACT SAME AS YOUR WORKING VERSION -->
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="scripts/settings.js" defer></script>
+    <script src="scripts/web-sdk.js" onload="initSdk('Bots')" defer></script>
+
+    <script>
+      window.addEventListener("WebSDKReady", () => {
+        const updateIcon = () => {
+          const launcher = document.querySelector("oda-chat-launcher");
+          if (launcher?.shadowRoot) {
+            const img = launcher.shadowRoot.querySelector("img");
+            if (img) {
+              img.src = "https://docs.oracle.com/en/dcommon/artie/img/botButtonIcon.gif";
+              img.style.width = "48px";
+              img.style.height = "48px";
+              img.style.objectFit = "contain";
+              img.style.borderRadius = "50%";
+            }
+          }
+        };
+        setTimeout(updateIcon, 1500);
+      });
+    </script>
+
+    <!-- Custom launcher icon override -->
+    <style>
+      oda-chat-launcher img {
+        content: url('https://docs.oracle.com/en/dcommon/artie/img/botButtonIcon.gif') !important;
+        width: 48px !important;
+        height: 48px !important;
+        object-fit: contain;
+        border-radius: 50%;
+      }
+    </style>
+
+    <style>
+        /* Your existing website styles */
+        :root {
+            --primary-color: #0d47a1;
+            --secondary-color: #b71c1c;
+            --light-gray: #f4f4f7;
+            --dark-gray: #333;
+            --text-color: #374151;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #fff;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .site-header {
+            background-color: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(13, 71, 161, 0.7), rgba(13, 71, 161, 0.7)), url('https://images.unsplash.com/photo-1613214536699-2a29c5a2a1b6?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 6rem 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero .btn {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            margin: 0.5rem;
+        }
+
+        .hero .btn:hover {
+            background-color: #c62828;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .service-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+        }
+
+        .alerts-section {
+            background-color: var(--light-gray);
+        }
+        
+        .alert-item {
+            background: white;
+            padding: 1.5rem;
+            border-left: 5px solid var(--secondary-color);
+            margin-bottom: 1rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .alert-item h4 {
+            margin: 0 0 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .alert-item .date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .connect-form {
+            display: none; /* Hidden since we removed the section */
+        }
+
+        .sample-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .sample-input:focus {
+            border-color: white;
+            outline: none;
+        }
+
+        .sample-button {
+            padding: 12px 24px;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .sample-button:hover {
+            background: #c62828;
+        }
+
+        .site-footer {
+            background-color: var(--dark-gray);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .site-footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-links {
+                gap: 1.5rem;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .connect-form {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container main-nav">
+            <a href="#" class="logo">🛡️ City Safety Dept.</a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#alerts">Alerts</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Protecting Our Community, Together</h1>
+            <p>Your official resource for emergency services, public alerts, and safety information.</p>
+            <a href="tel:911" class="btn">In an Emergency, Call 911</a>
+        </section>
+
+
+
+        <section id="services" class="section">
+            <div class="container">
+                <h2 class="section-title">Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="icon">🚔</div>
+                        <h3>Police Department</h3>
+                        <p>Providing law enforcement, crime prevention, and community support 24/7.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon">🚒</div>
+                        <h3>Fire & Rescue</h3>
+                        <p>Fire suppression, emergency medical response, and hazard mitigation.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon">🏥</div>
+                        <h3>Emergency Medical</h3>
+                        <p>Rapid paramedic services and ambulance dispatch for medical emergencies.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon">📢</div>
+                        <h3>Emergency Alerts</h3>
+                        <p>Sign up for real-time alerts about severe weather and local emergencies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="alerts" class="section alerts-section">
+            <div class="container">
+                <h2 class="section-title">Latest Alerts</h2>
+                <div class="alert-item">
+                    <h4>High Wind Advisory in Effect</h4>
+                    <span class="date">Posted: October 26, 2023</span>
+                    <p>A high wind advisory is in effect until 8:00 PM tonight. Secure loose outdoor items and exercise caution when driving.</p>
+                </div>
+                <div class="alert-item">
+                    <h4>Road Closure: Main Street</h4>
+                    <span class="date">Posted: October 25, 2023</span>
+                    <p>Main Street will be closed between 2nd Ave and 4th Ave for a community event this Saturday from 9 AM to 6 PM.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container" style="text-align:center;">
+                <h2 class="section-title">Contact Information</h2>
+                <p>For non-emergency inquiries, please use the contact information below or use our AI assistant.</p>
+                <p style="font-size: 1.2rem; margin-top: 1.5rem;">
+                    <strong>Non-Emergency Line:</strong> (555) 123-4567<br>
+                    <strong>Public Information Office:</strong> (555) 123-4568
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2023 City Public Safety Department. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
